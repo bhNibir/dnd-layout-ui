@@ -3,6 +3,7 @@ import { useDrag } from "react-dnd";
 import Column from "./Column";
 import { ROW } from "./constants";
 import DropZone from "./DropZone";
+import showID from "./ShowIdModal";
 
 const style = {};
 const Row = ({ data, components, handleDrop, path }) => {
@@ -37,6 +38,7 @@ const Row = ({ data, components, handleDrop, path }) => {
       ref={dragRef}
       style={{ ...style, opacity }}
       className="base draggable row"
+      onClick={(e) => showID(e, data.id)}
     >
       {data.id}
       <div className="columns">

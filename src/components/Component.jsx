@@ -1,6 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { COMPONENT } from "./constants";
+import showID from "./ShowIdModal";
 
 const style = {
   border: "1px dashed black",
@@ -26,6 +27,7 @@ const Component = ({ data, components, path }) => {
       ref={dragRef}
       style={{ ...style, opacity }}
       className="component draggable"
+      onClick={(e) => showID(e, data.id)}
     >
       <div>{data.id}</div>
       <div>{component.content}</div>

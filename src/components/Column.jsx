@@ -4,6 +4,7 @@ import { useDrag } from "react-dnd";
 import Component from "./Component";
 import { COLUMN } from "./constants";
 import DropZone from "./DropZone";
+import showID from "./ShowIdModal";
 
 const style = {};
 const Column = ({ data, components, handleDrop, path }) => {
@@ -37,6 +38,7 @@ const Column = ({ data, components, handleDrop, path }) => {
       ref={dragRef}
       style={{ ...style, opacity }}
       className=" draggable column"
+      onClick={(e) => showID(e, data.id)}
     >
       <Resizable
         style={{
