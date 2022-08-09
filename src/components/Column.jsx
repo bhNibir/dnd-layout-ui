@@ -1,3 +1,4 @@
+import { Resizable } from "re-resizable";
 import React from "react";
 import { useDrag } from "react-dnd";
 import Component from "./Component";
@@ -35,33 +36,40 @@ const Column = ({ data, components, handleDrop, path }) => {
     <div
       ref={dragRef}
       style={{ ...style, opacity }}
-      className="base draggable column"
+      className=" draggable column"
     >
-      {data.id}
-      {data.children.map((component, index) => {
-        const currentPath = `${path}-${index}`;
-
-        return (
-          <React.Fragment key={component.id}>
-            <DropZone
-              data={{
-                path: currentPath,
-                childrenCount: data.children.length,
-              }}
-              onDrop={handleDrop}
-            />
-            {renderComponent(component, currentPath)}
-          </React.Fragment>
-        );
-      })}
-      <DropZone
-        data={{
-          path: `${path}-${data.children.length}`,
-          childrenCount: data.children.length,
+      <Resizable
+        style={{
+          border: "solid 1px #ddd",
+          padding: "10px",
         }}
-        onDrop={handleDrop}
-        isLast
-      />
+      >
+        {data.id}
+        {data.children.map((component, index) => {
+          const currentPath = `${path}-${index}`;
+
+          return (
+            <React.Fragment key={component.id}>
+              <DropZone
+                data={{
+                  path: currentPath,
+                  childrenCount: data.children.length,
+                }}
+                onDrop={handleDrop}
+              />
+              {renderComponent(component, currentPath)}
+            </React.Fragment>
+          );
+        })}
+        <DropZone
+          data={{
+            path: `${path}-${data.children.length}`,
+            childrenCount: data.children.length,
+          }}
+          onDrop={handleDrop}
+          isLast
+        />
+      </Resizable>
     </div>
   );
 };

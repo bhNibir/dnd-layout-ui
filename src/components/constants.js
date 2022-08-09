@@ -51,7 +51,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: "row",
-      content: "row",
+      content: "new row",
     },
   },
   {
@@ -59,7 +59,7 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: "column",
-      content: "column",
+      content: "new column",
     },
   },
 ];

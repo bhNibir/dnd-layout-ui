@@ -68,7 +68,10 @@ body {
 .column {
   border: 1px solid blue;
   flex: 1 1 100%;
-  padding: 10px;
+
+  background-color: white;
+
+  cursor: col-resize;
 }
 
 .columns {

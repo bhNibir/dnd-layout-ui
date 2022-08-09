@@ -1,10 +1,11 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { SIDEBAR_ITEM } from "./constants";
 
 const SideBarItem = ({ data }) => {
   const [{ opacity }, dragRef] = useDrag({
     item: data,
-    type: data.component.type,
+    type: SIDEBAR_ITEM,
     collect: (monitor) => ({
       opacity: monitor.isDragging() ? 0.4 : 1,
     }),
