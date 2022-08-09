@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import DropZone from "./DropZone";
 import {
@@ -20,6 +20,9 @@ const Container = () => {
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
+  const [textAreaValue, setTextAreaValue] = useState({
+    Layout: layout,
+  });
 
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -119,6 +122,15 @@ const Container = () => {
     );
   };
 
+  useEffect(() => {
+    setTextAreaValue((preVal) => {
+      return {
+        ...preVal,
+        Layout: layout,
+      };
+    });
+  }, [layout]);
+
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -163,6 +175,14 @@ const Container = () => {
           }}
           onDrop={handleDropToTrashBin}
         />
+        <div className="base">
+          <textarea
+            value={JSON.stringify(textAreaValue, null, 4)}
+            rows="10"
+            cols="33"
+            readOnly
+          />
+        </div>
       </div>
     </div>
   );

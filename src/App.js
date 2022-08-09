@@ -1,4 +1,4 @@
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./App.css";
