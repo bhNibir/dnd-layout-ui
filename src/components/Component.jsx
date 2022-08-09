@@ -1,6 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { COMPONENT } from "./constants";
+import { COMPONENT } from "../utils/constants";
 import showID from "./ShowIdModal";
 
 const style = {

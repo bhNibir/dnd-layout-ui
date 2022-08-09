@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { ROW } from "../utils/constants";
 import Column from "./Column";
-import { ROW } from "./constants";
 import DropZone from "./DropZone";
 import showID from "./ShowIdModal";
 

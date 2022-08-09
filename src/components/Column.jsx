@@ -1,8 +1,8 @@
 import { Resizable } from "re-resizable";
 import React from "react";
 import { useDrag } from "react-dnd";
+import { COLUMN } from "../utils/constants";
 import Component from "./Component";
-import { COLUMN } from "./constants";
 import DropZone from "./DropZone";
 import showID from "./ShowIdModal";
 
