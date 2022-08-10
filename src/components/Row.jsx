@@ -7,6 +7,7 @@ import showID from "./ShowIdModal";
 
 const style = {};
 const Row = ({ data, components, handleDrop, path }) => {
+  // console.log("Row", data);
   const [{ isDragging }, dragRef] = useDrag({
     type: ROW,
     item: {
@@ -41,28 +42,30 @@ const Row = ({ data, components, handleDrop, path }) => {
       onClick={(e) => showID(e, data.id)}
     >
       {data.id}
-      <div className="columns">
-        {data.children.map((column, index) => {
-          const currentPath = `${path}-${index}`;
 
-          return (
-            <React.Fragment key={column.id}>
-              <DropZone
-                data={{
-                  path: currentPath,
-                  childrenCount: data.children.length,
-                }}
-                onDrop={handleDrop}
-                className="horizontalDrag"
-              />
-              {renderColumn(column, currentPath)}
-            </React.Fragment>
-          );
-        })}
+      <div className="columns">
+        {data.children &&
+          data.children.map((column, index) => {
+            const currentPath = `${path}-${index}`;
+
+            return (
+              <React.Fragment key={column.id}>
+                <DropZone
+                  data={{
+                    path: currentPath,
+                    childrenCount: data.children.length,
+                  }}
+                  onDrop={handleDrop}
+                  className="horizontalDrag"
+                />
+                {renderColumn(column, currentPath)}
+              </React.Fragment>
+            );
+          })}
         <DropZone
           data={{
-            path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length,
+            path: `${path}-${data?.children?.length}`,
+            childrenCount: data?.children?.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"

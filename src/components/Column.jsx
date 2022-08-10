@@ -47,26 +47,27 @@ const Column = ({ data, components, handleDrop, path }) => {
         }}
       >
         {data.id}
-        {data.children.map((component, index) => {
-          const currentPath = `${path}-${index}`;
+        {data.children &&
+          data.children.map((component, index) => {
+            const currentPath = `${path}-${index}`;
 
-          return (
-            <React.Fragment key={component.id}>
-              <DropZone
-                data={{
-                  path: currentPath,
-                  childrenCount: data.children.length,
-                }}
-                onDrop={handleDrop}
-              />
-              {renderComponent(component, currentPath)}
-            </React.Fragment>
-          );
-        })}
+            return (
+              <React.Fragment key={component.id}>
+                <DropZone
+                  data={{
+                    path: currentPath,
+                    childrenCount: data.children.length,
+                  }}
+                  onDrop={handleDrop}
+                />
+                {renderComponent(component, currentPath)}
+              </React.Fragment>
+            );
+          })}
         <DropZone
           data={{
-            path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length,
+            path: `${path}-${data?.children?.length}`,
+            childrenCount: data?.children?.length,
           }}
           onDrop={handleDrop}
           isLast

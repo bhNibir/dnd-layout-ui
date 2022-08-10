@@ -16,6 +16,7 @@ import shortid from "shortid";
 import {
   COLUMN,
   COMPONENT,
+  ROW,
   SIDEBAR_ITEM,
   SIDEBAR_ITEMS,
 } from "../utils/constants";
@@ -53,6 +54,52 @@ const Container = () => {
       // sidebar into
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
+        if (item.component.type === ROW) {
+          const newComponent = {
+            id: shortid.generate(),
+            ...item.component,
+          };
+          const newItem = {
+            id: newComponent.id,
+            type: ROW,
+          };
+          setComponents({
+            ...components,
+            [newComponent.id]: newComponent,
+          });
+          setLayout(
+            handleMoveSidebarComponentIntoParent(
+              layout,
+              splitDropZonePath,
+              newItem
+            )
+          );
+          return;
+        }
+        if (item.component.type === COLUMN) {
+          console.log(item.component.type);
+          const newComponent = {
+            id: shortid.generate(),
+            ...item.component,
+          };
+          const newItem = {
+            id: newComponent.id,
+            type: COLUMN,
+          };
+          setComponents({
+            ...components,
+            [newComponent.id]: newComponent,
+          });
+          setLayout(
+            handleMoveSidebarComponentIntoParent(
+              layout,
+              splitDropZonePath,
+              newItem
+            )
+          );
+          return;
+        }
+
         const newComponent = {
           id: shortid.generate(),
           ...item.component,
