@@ -42,7 +42,6 @@ const Column = ({ data, components, handleDrop, path }) => {
     >
       <Resizable
         style={{
-          border: "solid 1px #ddd",
           padding: "10px",
         }}
       >
